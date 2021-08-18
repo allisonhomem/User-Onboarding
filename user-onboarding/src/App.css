@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  background-color: lightgrey;
   color: #282c34;
 }
 
@@ -21,20 +20,43 @@ h1 {
   letter-spacing: 3px;
 }
 
+h2 {
+  font-size: 2rem;
+  text-shadow: 1px 1px lightgrey;
+}
+
 .the_body{
   height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  text-shadow: 1px 1px lightslategrey;
+  font-weight: bold;
 }
 
 .form_box {
-  width: 50%;
+  width: 45%;
   height: 65vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   border: 3px groove turquoise;
+  background-color: lightgrey;
+  opacity: 80%;
+}
+
+.radio_buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+label {
+  width: 60%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }

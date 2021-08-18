@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1> - the third wave - </h1>
-        <p> learn modern coffee roasting and brewing from world renown baristas </p>
+        <p> learn modern coffee methods from experts around the world </p>
       </header>
 
       <Form />
