@@ -6,3 +6,5 @@ describe('Name Input', function(){
         cy.get('input[name="user"]').should('have.value','Homer');
     })
 })
+
+
