@@ -37,22 +37,43 @@ describe('Legal Checkbox', function(){
     })
 })
 
+//A function that fills out the form
+const userInput = () => cy.get('input[name="user"]');
+const emailInput = () => cy.get('input[name="email"]');
+const passwordInput = () => cy.get('input[name="password"]');
+const courseInput = () => cy.get('select[name="course"]');
+const levelInput = () => cy.get('[type="radio"]');
+const checkboxInput = () => cy.get('[type="checkbox"]');
+
+const formFiller = () =>{
+      userInput().type('Steven')
+      emailInput().type('coffeebro@yahoo.com')
+      passwordInput().type('a_pass_word')
+      courseInput().select('Coffee Roasting')
+      levelInput().first().check()
+      checkboxInput().check()
+}
+
 //Checking if form may be submitted
 describe('Submit Form', function(){
     it('checks if form may be submitted', function(){
         cy.visit('localhost:3000')
-          .get('form')
-          .submit();
+          formFiller()
+        cy.get('form').submit();
     })
 })
 
 //Checking for form validation errors when input is left empty
 describe('Form Validation', function(){
-    it('checks if form validation error displays when input is left blank', function(){
+    it('checks if submit button is initially disabled', function(){
+       cy.visit('localhost:3000')
+         .get('button[type="submit"]')
+         .should('have.disabled')
+    })
+    it('checks if submit button is enabled when form is properly filled', function(){
         cy.visit('localhost:3000')
-          .get('input[name="password"]')
-          .type('hello')
-          .invoke('prop', 'validationMessage')
-          .should('equal', 'password must be at least 10 chars')
+        formFiller()
+        cy.get('button[type="submit"]')
+          .should('not.have.disabled')
     })
 })

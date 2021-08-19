@@ -35,15 +35,6 @@ h2 {
   font-weight: bold;
 }
 
-.error_box {
-  width:45%;
-  height: min-content;
-  background-color: lightgrey;
-  opacity: 80%;
-  border: 3px groove turquoise;
-  font-size: .8rem;
-}
-
 .form_box {
   width: 45%;
   height: 60vh;
@@ -55,6 +46,16 @@ h2 {
   background-color: lightgrey;
   opacity: 80%;
 }
+
+.error_box, .user_display {
+  width:45%;
+  height: min-content;
+  background-color: lightgrey;
+  opacity: 80%;
+  border: 3px groove turquoise;
+  font-size: .8rem;
+}
+
 
 .radio_buttons {
   width: 100%;

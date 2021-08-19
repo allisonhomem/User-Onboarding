@@ -27,12 +27,11 @@ const testUser = [
 function Form () {
     const [form,setForm] = useState({user:'',email:'',password:'',course:'',level:'',agree:false});
     const [errors,setErrors] = useState({user:'',email:'',password:'',course:'',level:'',agree:false});
-    const [users,setUsers] = useState({user:'',email:'',password:'',course:'',level:'',agree:false});
+    const [users,setUsers] = useState([{user:'',email:'',password:'',course:'',level:'',agree:false}]);
     const [disabled,setDisabled] = useState(true);
 
     useEffect(() => {
         setUsers(testUser);
-
     },[]);
 
     const setFormErrors = (name,value) => {
@@ -67,7 +66,7 @@ function Form () {
         axios.post(`https://reqres.in/api/users`)
         .then(res => {
             console.log(res.data,newUser);
-            setUsers([users.concat(newUser)]);
+            setUsers(users.concat(newUser));
             setForm({user:'',email:'',password:'',course:'',level:'',agree:false})
         })
         .catch(err => {
@@ -79,17 +78,7 @@ function Form () {
         <div className='the_body'>
             <h2> Sign up for a course today! </h2>
 
-            <div className='error_box'>
-                     <h4>Make sure the form is filled out completely!</h4>
-                     <dl>
-                         <dt>{errors.user}</dt>
-                         <dt>{errors.email}</dt>
-                         <dt>{errors.password}</dt>
-                         <dt>{errors.course}</dt>
-                         <dt>{errors.level}</dt>
-                         <dt>{errors.agree}</dt>
-                     </dl>
-            </div>
+     
 
             <form className='form_box'
                   onSubmit={submitForm}>
@@ -180,7 +169,24 @@ function Form () {
                     <button type='submit'
                             disabled={disabled}> Start Now!</button>
                 </label>
-            </form>
+            </form>       
+            
+            <div className='error_box'>
+                <h4>Make sure the form is filled out completely!</h4>
+                  <dl>
+                    <dt>{errors.user}</dt>
+                    <dt>{errors.email}</dt>
+                    <dt>{errors.password}</dt>
+                    <dt>{errors.course}</dt>
+                    <dt>{errors.level}</dt>
+                    <dt>{errors.agree}</dt>
+                  </dl>
+            </div>
+
+            <div className='user_display'>
+                {users.map(each =>
+                <p>{each.user} signed up to learn about {each.course}!</p>)}
+            </div>
 
         </div>
     );
