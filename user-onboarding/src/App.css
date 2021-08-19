@@ -26,7 +26,7 @@ h2 {
 }
 
 .the_body{
-  height: 90vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -35,9 +35,18 @@ h2 {
   font-weight: bold;
 }
 
+.error_box {
+  width:45%;
+  height: min-content;
+  background-color: lightgrey;
+  opacity: 80%;
+  border: 3px groove turquoise;
+  font-size: .8rem;
+}
+
 .form_box {
   width: 45%;
-  height: 65vh;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

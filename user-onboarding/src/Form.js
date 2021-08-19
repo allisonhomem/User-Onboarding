@@ -32,6 +32,7 @@ function Form () {
 
     useEffect(() => {
         setUsers(testUser);
+
     },[]);
 
     const setFormErrors = (name,value) => {
@@ -48,7 +49,8 @@ function Form () {
     }
 
     useEffect(() => {
-        schema.isValid(form).then(valid => setDisabled(!valid))
+        schema.isValid(form)
+              .then(valid => setDisabled(!valid))
     },[form]);
 
     const submitForm = (event) => {
@@ -76,6 +78,19 @@ function Form () {
     return (
         <div className='the_body'>
             <h2> Sign up for a course today! </h2>
+
+            <div className='error_box'>
+                     <h4>Make sure the form is filled out completely!</h4>
+                     <dl>
+                         <dt>{errors.user}</dt>
+                         <dt>{errors.email}</dt>
+                         <dt>{errors.password}</dt>
+                         <dt>{errors.course}</dt>
+                         <dt>{errors.level}</dt>
+                         <dt>{errors.agree}</dt>
+                     </dl>
+            </div>
+
             <form className='form_box'
                   onSubmit={submitForm}>
                 <label>
@@ -110,7 +125,7 @@ function Form () {
                     <select name='course'
                             value={form.course}
                             onChange={change}> 
-                        <option> -- Pick a course below -- </option>
+                        <option value='0'> -- Pick a course below -- </option>
                         <option value='1'> Coffee Growing </option>
                         <option value='2'> Coffee Roasting </option>
                         <option value='3'> Coffee Brewing </option>
@@ -120,7 +135,6 @@ function Form () {
                 </label>
 
                 <p> Level of Experience: </p>
-
                 <div className='radio_buttons'>
                   <label>
                     Novice:
