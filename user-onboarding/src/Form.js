@@ -24,9 +24,9 @@ const testUser = [
 ]
 
 function Form () {
-    const [form,setForm] = useState({name:'',email:'',password:'',course:'',level:'',agree:false});
-    const [errors,setErrors] = useState({name:'',email:'',password:'',course:'',level:'',agree:false});
-    const [users,setUsers] = useState({name:'',email:'',password:'',course:'',level:'',agree:false});
+    const [form,setForm] = useState({user:'',email:'',password:'',course:'',level:'',agree:false});
+    const [errors,setErrors] = useState({user:'',email:'',password:'',course:'',level:'',agree:false});
+    const [users,setUsers] = useState({user:'',email:'',password:'',course:'',level:'',agree:false});
     const [disabled,setDisabled] = useState(true);
 
     useEffect(() => {
@@ -65,7 +65,7 @@ function Form () {
         .then(res => {
             console.log(res.data,newUser);
             setUsers([users.concat(newUser)]);
-            setForm({name:'',email:'',password:'',course:'',level:'',agree:false})
+            setForm({user:'',email:'',password:'',course:'',level:'',agree:false})
         })
         .catch(err => {
             console.error('there was an error in submitting the form',err)
